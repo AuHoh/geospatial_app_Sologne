@@ -3,13 +3,14 @@ import folium
 import geopandas as gpd
 from streamlit_folium import folium_static
 
+from utils.navigation import create_sidebar
 
 st.set_page_config(
     page_title="Sologne forest monitoring",
     page_icon="🌲",
 )
 
-
+create_sidebar()
 
 st.title("Sologne forest monitoring")
 
@@ -54,22 +55,4 @@ folium.LayerControl().add_to(m)
 
 folium_static(m, width=900, height=700)
 
-# Sidebar content
-st.sidebar.title("About Me")
-st.sidebar.markdown("""
-**Name**: Audrey Hohmann
 
-I am a freelance Geospatial Data Scientist specializing in GIS, Remote Sensing, and developing custom geospatial solutions.
-
-This demo app is designed to monitor Sologne forests in France by using Earth Observation data combined with spatial analysis tools to produce actionable insights.
-
-### Key Features of the App:
-- Forest monitoring
-- Satellite and drone imagery analysis
-- Custom geospatial data solutions
-
-Feel free to explore the various features of the app!
-
-Visit my website: [Geospatial data scientist](https://www.audreyhohmann.com)
-
-""")
