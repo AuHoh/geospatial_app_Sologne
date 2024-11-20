@@ -7,7 +7,7 @@ import streamlit as st
 from utils.navigation import create_sidebar
 
 # Titre de l'application
-st.title("Sologne wildfires map since 2006")
+st.title("Carte des feux de forêt en Sologne depuis 2006")
 
 create_sidebar()
 
@@ -35,7 +35,7 @@ f_com = folium.GeoJson(
     data=commune,
     style_function=lambda feature: {
         "fillColor": "#ffff00",
-        "color": "black",
+        "color": "gray",
         "weight": 2,
             },
     name= 'administrative boundaries',
