@@ -14,7 +14,8 @@ create_sidebar()
 
 st.title("Sologne forest monitoring")
 
-st.write("Sologne is a natural region in Centre-Val de Loire, France, extending over portions of the departements of Loiret, Loir-et-Cher and Cher.")
+st.write(
+    "Sologne is a natural region in Centre-Val de Loire, France, extending over portions of the departements of Loiret, Loir-et-Cher and Cher.")
 
 st.markdown("""
    Sologne is a natural region in Centre-Val de Loire, France, extending over portions of the departements of Loiret, Loir-et-Cher and Cher.
@@ -22,18 +23,16 @@ st.markdown("""
    Its inhabitants are known as the Solognots (masculine) and Solognotes (feminine).
 
     """
-              )
+            )
 
 # Lire les données depuis un fichier parquet
 dept_sologne = 'data/dept_sologne.parquet'
 dept = gpd.read_parquet(dept_sologne)
 
-
 # Créer une carte centrée sur la zone
 m = folium.Map(location=[47.70012, 1.89975], zoom_start=6)
 
 popup = folium.GeoJsonPopup(fields=["NOM"], aliases=["Department name"])
-
 
 f_dept = folium.GeoJson(
     data=dept,
@@ -41,18 +40,14 @@ f_dept = folium.GeoJson(
         "fillColor": "#ffff00",
         "color": "red",
         "weight": 2,
-            },
-    name= 'administrative boundaries',
-    popup = popup, control=True,
+    },
+    name='administrative boundaries',
+    popup=popup, control=True,
     show=True)
 
 f_dept.add_to(m)
 
-
 # Ajouter un LayerControl pour activer ou désactiver des layers
 folium.LayerControl().add_to(m)
 
-
 folium_static(m, width=900, height=700)
-
-

@@ -17,7 +17,6 @@ gdf = gpd.read_parquet(wildfire_sol)
 com_sologne = 'data/com_sologne.parquet'
 commune = gpd.read_parquet(com_sologne)
 
-
 # Obtenir les limites de la distribution
 bbox = com_sologne.bounds.iloc[0]
 
@@ -30,22 +29,18 @@ m = folium.Map(location=[center_latitude, center_longitude], tiles="GeoportailFr
 
 popup = folium.GeoJsonPopup(fields=["NOM"], aliases=["Commune name"])
 
-
 f_com = folium.GeoJson(
     data=commune,
     style_function=lambda feature: {
         "fillColor": "#ffff00",
         "color": "gray",
         "weight": 2,
-            },
-    name= 'administrative boundaries',
-    popup = popup, control=True,
+    },
+    name='administrative boundaries',
+    popup=popup, control=True,
     show=True)
 
 f_com.add_to(m)
 
-
-
 # Afficher la carte avec .streamlit-folium
 folium_static(m, width=900, height=700)
-
