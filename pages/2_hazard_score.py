@@ -15,10 +15,10 @@ create_sidebar()
 wildfire_sol = 'data/df_feat_target.parquet'
 gdf = gpd.read_parquet(wildfire_sol)
 com_sologne = 'data/com_sologne.parquet'
-commune = gpd.read_parquet(com_sologne)
+df_commune = gpd.read_parquet(com_sologne)
 
 # Obtenir les limites de la distribution
-bbox = com_sologne.bounds.iloc[0]
+bbox = df_commune.bounds.iloc[0]
 
 # Coordonnées du centre des limites
 center_latitude = (bbox['miny'] + bbox['maxy']) / 2
@@ -30,7 +30,7 @@ m = folium.Map(location=[center_latitude, center_longitude], tiles="GeoportailFr
 popup = folium.GeoJsonPopup(fields=["NOM"], aliases=["Commune name"])
 
 f_com = folium.GeoJson(
-    data=commune,
+    data=df_commune,
     style_function=lambda feature: {
         "fillColor": "#ffff00",
         "color": "gray",
@@ -41,6 +41,9 @@ f_com = folium.GeoJson(
     show=True)
 
 f_com.add_to(m)
+
+# Ajouter un contrôle de visibilité des couches
+folium.LayerControl().add_to(m)
 
 # Afficher la carte avec .streamlit-folium
 folium_static(m, width=900, height=700)
