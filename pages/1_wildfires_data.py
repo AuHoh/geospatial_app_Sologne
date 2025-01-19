@@ -7,7 +7,7 @@ import streamlit as st
 from utils.navigation import create_sidebar
 
 # Titre de l'application
-st.title("Carte des feux de forêt en Sologne depuis 2006")
+st.title("Carte des feux de forêt en Sologne entre 2006 et 2022")
 
 create_sidebar()
 
