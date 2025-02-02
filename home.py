@@ -6,21 +6,20 @@ from streamlit_folium import folium_static
 from utils.navigation import create_sidebar
 
 st.set_page_config(
-    page_title="Sologne forest monitoring",
+    page_title="Surveillance de la forêt de Sologne",
     page_icon="🌲",
 )
 
 create_sidebar()
 
-st.title("Sologne forest monitoring")
+st.title("Surveillance de la forêt de Sologne")
 
 st.write(
-    "Sologne is a natural region in Centre-Val de Loire, France, extending over portions of the departements of Loiret, Loir-et-Cher and Cher.")
+    "La Sologne est une région naturelle française du Centre-Val de Loire qui s'étend sur une partie des départements du Loiret, du Loir-et-Cher et du Cher.")
 
 st.markdown("""
-   Sologne is a natural region in Centre-Val de Loire, France, extending over portions of the departements of Loiret, Loir-et-Cher and Cher.
-   Its area is about 5,000 square kilometres (1,900 sq mi). To its north is the river Loire, to its south the river Cher, while the districts of Sancerre and Berry are to its east.
-   Its inhabitants are known as the Solognots (masculine) and Solognotes (feminine).
+   Sa superficie est d'environ 5 000 kilomètres carrés. Elle est bordée au nord par le fleuve de la Loire, au sud par la rivière du Cher et à l'est par les régions de Sancerre et du Berry.
+   Ses habitants sont appelés les Solognots (masculin) et les Solognotes (féminin).
 
     """
             )
@@ -41,7 +40,7 @@ f_dept = folium.GeoJson(
         "color": "red",
         "weight": 2,
     },
-    name='administrative boundaries',
+    name='Limites administratives',
     popup=popup, control=True,
     show=True)
 

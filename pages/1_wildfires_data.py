@@ -27,7 +27,7 @@ center_longitude = (bbox['minx'] + bbox['maxx']) / 2
 # Créer une carte centrée sur les limites
 m = folium.Map(location=[center_latitude, center_longitude], zoom_start=8)
 
-popup = folium.GeoJsonPopup(fields=["NOM"], aliases=["Commune name"])
+popup = folium.GeoJsonPopup(fields=["NOM"], aliases=["Nom de la commune :"])
 
 f_com = folium.GeoJson(
     data=commune,
@@ -36,7 +36,7 @@ f_com = folium.GeoJson(
         "color": "gray",
         "weight": 2,
     },
-    name='administrative boundaries',
+    name='Limites administratives',
     popup=popup, control=True,
     show=False)
 

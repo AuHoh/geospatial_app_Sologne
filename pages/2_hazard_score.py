@@ -7,7 +7,7 @@ import streamlit as st
 from utils.navigation import create_sidebar
 
 # Titre de l'application
-st.title("Carte d'Aléa des feux de forêt par commune")
+st.title("Carte d'aléa des feux de forêt par commune")
 
 create_sidebar()
 
@@ -46,19 +46,19 @@ m.fit_bounds(folium_bounds)
 # create popup
 popup = folium.GeoJsonPopup(
     fields=["NOM", "hazard_class"],
-    aliases=["Nom commune", "Classe d'aléa"],
+    aliases=["Nom commune", "Classes d'aléa"],
     localize=True
 )
 
 f_com = folium.GeoJson(
     data=df_score,
     style_function=style_function,
-    name="classe d'aléa",
+    name="classes d'aléa",
     popup=popup,
     show=True,
     tooltip=folium.GeoJsonTooltip(
         fields=["NOM"],
-        aliases=["Commune"],
+        aliases=["Nom de la commune :"],
         sticky=True
     )
 )
@@ -71,31 +71,69 @@ folium_static(m, width=900, height=700)
 # Créer une légende positionnée à droite de la carte
 st.markdown("""
     <style>
-    /* Créer un conteneur flex pour aligner la légende */
-    .stMarkdown {
-        display: inline-block;
-        position: relative;
-        top: -650px;  /* Remonter la légende */
-        left: 920px;  /* Positionner à droite de la carte (900px + 20px de marge) */
+    .legend-container {
+        position: fixed;  
+        top: 400px;      
+        right: 20px;     
+        z-index: 1000;   
+    }
+
+    .legend-box {
+        background-color: white;
+        padding: 12px;
+        border: 2px solid grey;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        color: black; 
+    }
+
+    /* S'assurer que tous les textes dans la légende restent noirs */
+    .legend-box b,
+    .legend-box span,
+    .legend-item span {
+        color: black !important;  /* Use !important to override any theme settings */
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+    }
+
+    .color-box {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+        border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* Style spécifique pour le mode sombre */
+    @media (prefers-color-scheme: dark) {
+        .legend-box {
+            border-color: rgba(255,255,255,0.2);
+        }
     }
     </style>
 
-    <div style='background-color: white; 
-                padding: 10px; 
-                border: 2px solid grey; 
-                width: fit-content;'>
-        <b>Classe d'aléa</b>
-        <div style='display: flex; align-items: center; margin-top: 5px;'>
-            <div style='background-color: red; width: 18px; height: 18px; margin-right: 8px;'></div>
-            <span>Fort</span>
-        </div>
-        <div style='display: flex; align-items: center; margin-top: 5px;'>
-            <div style='background-color: #f39c12; width: 18px; height: 18px; margin-right: 8px;'></div>
-            <span>Moyen</span>
-        </div>
-        <div style='display: flex; align-items: center; margin-top: 5px;'>
-            <div style='background-color: #f1c40f; width: 18px; height: 18px; margin-right: 8px;'></div>
-            <span>Faible</span>
+    <div class="legend-container">
+        <div class="legend-box">
+            <b>Classe d'aléa</b>
+            <div class="legend-item">
+                <div class="color-box" style="background-color: red;"></div>
+                <span>Fort</span>
+            </div>
+            <div class="legend-item">
+                <div class="color-box" style="background-color: #f39c12;"></div>
+                <span>Moyen</span>
+            </div>
+            <div class="legend-item">
+                <div class="color-box" style="background-color: #f1c40f;"></div>
+                <span>Faible</span>
+            </div>
         </div>
     </div>
 """, unsafe_allow_html=True)
+
+st.markdown(''':gray[Cette carte d'aléa présente les communes utilisées dans le jeu de données en entrée du modèle.\
+        Certaines communes apparaissent en gris sur la carte, ce sont les communes exclues du jeu de données\
+       lors du processus de nettoyage des données]''')

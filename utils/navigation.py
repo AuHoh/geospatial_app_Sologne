@@ -9,21 +9,22 @@ def create_sidebar():
         st.page_link("pages/3_wildfires_prediction.py", label="Modèle de prédiction", icon="3️⃣")
 
         # Sidebar content
-        st.title("About Me")
+        st.title("A propos de moi")
         st.markdown("""
-        **Name**: Audrey Hohmann
+        
+        Je suis **Audrey Hohmann**, une consultante indépendante, spécialiste en intelligence et données géospatiales appliquées à des enjeux stratégiques et environnementaux. 
+        
 
-        I am a freelance Geospatial Data Scientist specializing in GIS, Remote Sensing, and developing custom geospatial solutions.
+        Cette application de démonstration est conçue pour prédire les feux de forêts en Sologne en utilisant des données d'observation de la Terre combinées à des outils d'analyse spatiale pour produire des informations exploitables.
 
-        This demo app is designed to monitor Sologne forests in France by using Earth Observation data combined with spatial analysis tools to produce actionable insights.
+        ### Caractéristiques principales de l'application :
+        - Surveillance des feux de forêts
+        - Analyse d'images satellites et SIG
+        - Solutions de données géospatiales personnalisées
 
-        ### Key Features of the App:
-        - Forest monitoring
-        - Satellite and drone imagery analysis
-        - Custom geospatial data solutions
+        N'hésitez pas à explorer les différentes fonctionnalités de l'application !
 
-        Feel free to explore the various features of the app!
-
-        Visit my website: [Geospatial data scientist](https://www.audreyhohmann.com)
+        Visitez mon site web : [Geospatial data scientist](https://www.audreyhohmann.com)
+        
 
         """)

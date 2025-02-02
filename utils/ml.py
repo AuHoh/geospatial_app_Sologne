@@ -49,9 +49,41 @@ def mapping_feature_name(feature):
                'Class_512': 'Surfaces en eau - Plans d’eau',
                'Class_521': 'Surfaces en eau - Lagunes littorales',
                'Class_522': 'Surfaces en eau - Estuaires',
-               'Class_523': 'Surfaces en eau - Mers et océans'}
+               'Class_523': 'Surfaces en eau - Mers et océans',
+               'MNT': 'Altitude moyenne',
+               'slope': 'Pente moyenne (°)',
+               'aspect': 'Angle moyen des pentes (°)',
+               'P21_POP': 'Population',
+               'P21_OCCLOG': 'Nombre de logements occupés',
+               'P21_density': 'Densité population au km2',
+               'Type autoroutier': 'Autoroute'}
 
     if feature in mapping:
         return mapping[feature]
 
     return feature
+
+
+def validate_class_percentages(features):
+    class_sum = sum(value for key, value in features.items() if key.startswith('Class_'))
+    return class_sum <= 1, class_sum
+
+
+low_threshold = 2.5
+medium_threshold = 5
+
+
+def get_hazard_color(prediction):
+    if prediction <= low_threshold:
+        return "#f1c40f"  # Jaune (Faible)
+    elif prediction <= medium_threshold:
+        return "#f39c12"  # Orange (Moyen)
+    else:
+        return "red"  # Rouge (Fort)
+
+
+# Fonction pour déterminer la couleur du texte en fonction du fond
+def get_text_color(background_color):
+    if background_color == "#f1c40f":
+        return "black"
+    return "white"
