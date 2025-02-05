@@ -9,6 +9,10 @@ from utils.navigation import create_sidebar
 # Titre de l'application
 st.title("Carte d'aléa des feux de forêt par commune")
 
+st.markdown(''':gray[Cette carte d'aléa présente les communes utilisées dans le jeu de données en entrée du modèle.\
+        Certaines communes apparaissent en gris sur la carte, ce sont les communes exclues du jeu de données\
+       lors du processus de nettoyage des données.]''')
+
 create_sidebar()
 
 # Lire les données depuis un fichier parquet
@@ -134,6 +138,3 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown(''':gray[Cette carte d'aléa présente les communes utilisées dans le jeu de données en entrée du modèle.\
-        Certaines communes apparaissent en gris sur la carte, ce sont les communes exclues du jeu de données\
-       lors du processus de nettoyage des données]''')

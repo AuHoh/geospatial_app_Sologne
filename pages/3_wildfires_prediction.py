@@ -84,13 +84,17 @@ for feature in features_ordered:
 
 st.markdown("""
     <style>
+    .stButton {
+        text-align: center;  
+        margin-top: 20px;    
+    }
     .stButton > button {
         font-size: 24px;
         font-weight: bold;
         padding: 15px 30px;
         border-radius: 5px;
         height: auto;
-        width: auto;
+        width: 50%;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         transition: all 0.2s ease;
     }
@@ -116,24 +120,95 @@ if predict_button:
 
         # Création du HTML
         score_html = f"""
-           <div style='
-               display: inline;
-               font-size: 20px;
-           '>
-               <b>Score d'aléa prédit : </b>
-               <span style='
-                   background-color: {get_hazard_color(prediction)};
-                   padding: 2px 6px;
-                   border-radius: 3px;
-                   color: {get_text_color(get_hazard_color(prediction))};
-                   font-weight: bold;
-               '>{prediction:.2f}</span>
-           </div>
-           """
+            <div style='
+                width: 100%;          
+                text-align: center;  
+                margin-top: 20px;
+                margin-bottom: 20px;  
+                font-size: 20px;
+            '>
+                <b>Score d'aléa prédit : </b>
+                <span style='
+                    background-color: {get_hazard_color(prediction)};
+                    padding: 2px 6px;
+                    border-radius: 3px;
+                    color: {get_text_color(get_hazard_color(prediction))};
+                    font-weight: bold;
+                    display: inline-block;  /* Permet de mieux gérer le padding */
+                    margin-top: 5px;        /* Petit espace entre le texte et le score */
+                '>{prediction:.2f}</span>
+            </div>
+        """
 
         # Affichage dans Streamlit
         st.markdown(score_html, unsafe_allow_html=True)
 
+st.markdown("""
+    <style>
+    .alert-box {
+        font-size: 16px;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 8px;
+        border: 2px solid #4a4a4a;  /* Bordure plus épaisse et plus visible */
+    }
 
+    /* Style pour mode clair */
+    [data-theme="light"] .alert-box {
+        background-color: #f8f9fa;
+        color: black;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Ajout d'une ombre légère */
+    }
 
+    /* Style pour mode sombre */
+    [data-theme="dark"] .alert-box {
+        background-color: #262730;
+        color: white;
+        box-shadow: 0 2px 4px rgba(255,255,255,0.1);  /* Ombre adaptée au mode sombre */
+    }
 
+    /* Style pour le titre */
+    .title-text {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #4a4a4a;  /* Ligne de séparation sous le titre */
+        padding-bottom: 8px;
+        display: block;
+    }
+
+    /* Style pour les badges de niveau */
+    .hazard-badge {
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: bold;
+        color: black !important;
+    }
+    </style>
+
+    <div class='alert-box'>
+        <span class='title-text'>Classification des niveaux d'aléa</span>
+        Le score de prédiction est classé en trois niveaux d'aléa selon les seuils suivants :
+        <ul style='list-style-type: none; padding-left: 20px; margin-top: 10px;'>
+            <li style='margin-bottom: 8px;'>
+                • Score ≤ 2.5 : Niveau d'aléa 
+                <span class='hazard-badge' style='background-color: #f1c40f;'>
+                    Faible
+                </span>
+            </li>
+            <li style='margin-bottom: 8px;'>
+                • Score entre 2.5 et 5 : Niveau d'aléa 
+                <span class='hazard-badge' style='background-color: #f39c12;'>
+                    Moyen
+                </span>
+            </li>
+            <li style='margin-bottom: 8px;'>
+                • Score > 5 : Niveau d'aléa 
+                <span class='hazard-badge' style='background-color: red;'>
+                    Fort
+                </span>
+            </li>
+        </ul>
+        <p style='margin-top: 15px;'>Ces seuils ont été définis pour caractériser l'intensité potentielle du phénomène.</p>
+    </div>
+""", unsafe_allow_html=True)

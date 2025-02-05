@@ -31,7 +31,7 @@ dept = gpd.read_parquet(dept_sologne)
 # Créer une carte centrée sur la zone
 m = folium.Map(location=[47.70012, 1.89975], zoom_start=6)
 
-popup = folium.GeoJsonPopup(fields=["NOM"], aliases=["Department name"])
+popup = folium.GeoJsonPopup(fields=["NOM"], aliases=["Nom du Département"])
 
 f_dept = folium.GeoJson(
     data=dept,

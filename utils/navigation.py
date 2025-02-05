@@ -24,7 +24,12 @@ def create_sidebar():
 
         N'hésitez pas à explorer les différentes fonctionnalités de l'application !
 
-        Visitez mon site web : [Geospatial data scientist](https://www.audreyhohmann.com)
+        Pour en savoir plus, visitez : 
         
-
+        :globe_with_meridians: [mon site web pro](https://www.audreyhohmann.com) 
+        
+        :octopus: [mon Github](https://github.com/AuHoh)
+    
+        :octopus: [Repo du projet](https://github.com/votre-username/votre-repo)
+        
         """)
