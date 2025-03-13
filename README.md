@@ -124,8 +124,11 @@ geospatial_app_Sologne/
 │   └── view4_wildfire-hazard_prediction.png # Screenshot of prediction interface
 ├── model/
 │   └── rf_clf.joblib       # Serialized Random Forest classifier model
-├── pages/
-│   ├── 1_wildfires_data.py  # Streamlit page for wildfire data exploration
+├ notebooks/
+│   ├── EDA_monitoring_sologne.ipynb # Exploratory Data Analysis (EDA) and Feature Engineering notebook
+│   ├── Model_monitoring_sologne.ipynb   # Models prediction notebook
+├ pages/
+│   ├──1_wildfires_data.py  # Streamlit page for wildfire data exploration
 │   ├── 2_hazard_score.py    # Streamlit page for hazard scoring analysis
 │   └── 3_wildfires_prediction.py # Streamlit page for prediction functionality
 ├── utils/
