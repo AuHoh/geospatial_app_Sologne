@@ -12,7 +12,7 @@ def create_sidebar():
         st.title("A propos de moi")
         st.markdown("""
         
-        Je suis **Audrey Hohmann**, une consultante indépendante, spécialiste en intelligence et données géospatiales appliquées à des enjeux stratégiques et environnementaux. 
+        Je suis **Audrey Hohmann**, une consultante indépendante, spécialiste en intelligence artificielle et données géospatiales appliquées à des enjeux stratégiques et environnementaux. 
         
 
         Cette application de démonstration est conçue pour prédire une classe d'aléa feux de forêts en Sologne en utilisant des données et outils d'analyse spatiale pour produire des informations exploitables pour un modèle de prédiction.

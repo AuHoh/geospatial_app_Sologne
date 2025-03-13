@@ -12,7 +12,8 @@ def display_label_and_input(label_text, key, value):
     with col1:
         st.write(label_text)
     with col2:
-        return st.number_input("feature input", key=key, value=value, label_visibility="collapsed")
+        return st.number_input("feature input", key=key, value=float(value), label_visibility="collapsed",
+                               min_value=0.0)
 
 
 single_sample = {'Class_111': 0.0,
