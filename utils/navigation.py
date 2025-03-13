@@ -15,7 +15,7 @@ def create_sidebar():
         Je suis **Audrey Hohmann**, une consultante indépendante, spécialiste en intelligence et données géospatiales appliquées à des enjeux stratégiques et environnementaux. 
         
 
-        Cette application de démonstration est conçue pour prédire les feux de forêts en Sologne en utilisant des données d'observation de la Terre combinées à des outils d'analyse spatiale pour produire des informations exploitables.
+        Cette application de démonstration est conçue pour prédire une classe d'aléa feux de forêts en Sologne en utilisant des données et outils d'analyse spatiale pour produire des informations exploitables pour un modèle de prédiction.
 
         ### Caractéristiques principales de l'application :
         - Surveillance des feux de forêts
@@ -23,13 +23,13 @@ def create_sidebar():
         - Solutions de données géospatiales personnalisées
 
         N'hésitez pas à explorer les différentes fonctionnalités de l'application !
+        
+        Pour en savoir plus sur le contexte de ce travail et les conditions d'utilisation : \
+        
+        :octopus: [Repo du projet](https://github.com/AuHoh/geospatial_app_Sologne)
 
-        Pour en savoir plus, visitez : 
+        Pour en savoir plus sur moi, visitez : \
         
         :globe_with_meridians: [mon site web pro](https://www.audreyhohmann.com) 
-        
-        :octopus: [mon Github](https://github.com/AuHoh)
-    
-        :octopus: [Repo du projet](https://github.com/votre-username/votre-repo)
         
         """)

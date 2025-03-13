@@ -16,8 +16,6 @@ st.markdown(''':gray[Cette carte d'aléa présente les communes utilisées dans 
 create_sidebar()
 
 # Lire les données depuis un fichier parquet
-wildfire_sol = 'data/df_feat_target.parquet'
-gdf = gpd.read_parquet(wildfire_sol)
 com_score = 'data/com_score.parquet'
 df_score = gpd.read_parquet(com_score)
 

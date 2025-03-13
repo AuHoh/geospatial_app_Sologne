@@ -54,16 +54,15 @@ single_sample = {'Class_111': 0.0,
 
 model = get_model('rf_clf')
 
-st.title(
-    "Modèle de prédiction de la classe d'aléa feu de forêt d'une commune en fonction des valeurs fournies pour les facteurs de prédisposition")
+st.title("Modèle de prédiction de la classe d'aléa feu de forêt d'une commune")
 
 create_sidebar()
 
 st.markdown(
     """
-    **Cette classe d'aléa feu de forêt** est conçu pour prendre en compte à la fois la fréquence et l'intensité des feux de forêt dans une commune, en les comparant à la moyenne régionale.
+    **Cette classe d'aléa feu de forêt** est basée à la fois sur la fréquence et l'intensité des feux de forêt dans une commune, en les comparant à la moyenne régionale.
 
-    ### Informations sur les facteurs de prédisposition pris en compte par commune
+    ### Informations sur les facteurs de prédisposition pris en compte dans le modèle :
     - Les classes d'occupation du sol sont données en pourcentage de recouvrement de la surface de la commune (valeurs entre 0 et 1).
     - Les informations sur les tronçons de route sont fournies en mètres. 
     
